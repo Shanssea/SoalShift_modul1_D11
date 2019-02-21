@@ -143,9 +143,9 @@ poin b.
       
       **input** membaca syslog yang ada di /var/log/syslog.**alphabet** adalah sumber huruf yang akan menggantikan huruf-huruf yang ada. **trans+=( "${alphabet[@]:(-(26-$jam))}" )** trans mengambil huruf dari alphabet ketika dikurangi dengan $jam. **trans+=( "${alphabet[@]:0:$(( $jam + 1 ))}" )** trans disini mengambil huruf-huruf selanjutnya. **timestamp** adalah timestamp untuk nama filenya sesuai dengan soal. Lalu hasilnya dimasukkan ke /home/sea/Documents/Sisop/Modul_1/Soal4/$timestamp.txt.
       
-      ![soal4_result](/images/soal4_result)
+      ![soal4_result](/images/soal4_result.png)
       
-      ![soal4_result2](/images/soal4_result2)
+      ![soal4_result2](/images/soal4_result2.png)
       
 ## Soal 5
 
