@@ -57,9 +57,9 @@ poin b.
    * Urutan nama file tidak boleh ada yang terlewatkan meski filenya dihapus.
    * Password yang dihasilkan tidak boleh sama.
 
-            ![soal3_1](/images/soal3_1.png)
+      ![soal3_1](/images/soal3_1.png)
 
-            Jika file password$count.txt tidak ada maka akan melakukan increment i dan i akan di print di count. **cat /dev/urandom** berfungsi untuk melihat char random. **tr -dc 'a-zA-Z0-9'** berfungsi untuk membuat char dari alphabet kecil dan besar serta angka. **Fold -w** untuk membuat width atau lebar dari string. **Head -n** untuk mengambil baris pertama. lalu dimasukkan ke file **password$count.txt**
+      Jika file password$count.txt tidak ada maka akan melakukan increment i dan i akan di print di count. **cat /dev/urandom** berfungsi untuk melihat char random. **tr -dc 'a-zA-Z0-9'** berfungsi untuk membuat char dari alphabet kecil dan besar serta angka. **Fold -w** untuk membuat width atau lebar dari string. **Head -n** untuk mengambil baris pertama. lalu dimasukkan ke file **password$count.txt**
 
 ## Soal 4
 
@@ -70,16 +70,16 @@ poin b.
    * Jumlah field (number of field) pada baris tersebut berjumlah kurang dari 13.
    * Masukkan record tadi ke dalam file logs yang berada pada direktori **/home/[user]/modul1.**
    * Jalankan script tadi setiap 6 menit dari menit ke 2 hingga 30, contoh 13:02, 13:08, 13:14, dst.
-    
-         ![soal5_1](/images/soal5_1.png)
+   
+       ![soal5_1](/images/soal5_1.png)
 
-            cron :
+        cron :
 
-            ![soal5_cron](/images/soal5_cron.png)
+        ![soal5_cron](/images/soal5_cron.png)
 
-            **awk '/cron/ || /CRON/,!/sudo/'** berfungsi untuk menyaring yang hanya memiliki kata cron dan tidak mengandung kata CRON dan sudo dari /var/log/syslog. **awk 'NF < 13'** berfungsi untuk menampilkan kolom kurang dari 13 kolom. lalu disimpan di **/home/sea/modul1/soal5.log**
-            Output :
+        **awk '/cron/ || /CRON/,!/sudo/'** berfungsi untuk menyaring yang hanya memiliki kata cron dan tidak mengandung kata CRON dan sudo dari /var/log/syslog. **awk 'NF < 13'** berfungsi untuk menampilkan kolom kurang dari 13 kolom. lalu disimpan di **/home/sea/modul1/soal5.log**
+         Output :
 
-            ![soal5_2](images/soal5_2.png)
+         ![soal5_2](images/soal5_2.png)
 
 
