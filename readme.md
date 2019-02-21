@@ -4,11 +4,11 @@
 1. Anda diminta tolong oleh teman anda untuk mengembalikan filenya yang telah dienkripsi oleh seseorang menggunakan bash script, file yang dimaksud adalah nature.zip. Karena terlalu mudah kalian memberikan syarat akan membuka seluruh file tersebut jika pukul 14:14 pada tanggal 14 Februari atau hari tersebut adalah hari jumat pada bulan Februari.
 Hint: Base64, Hexdump
 
-   ![soal1_1](/images/soal1_1.png)
+      ![soal1_1](/images/soal1_1.png)
 
-cron :
+      cron :
 
-   ![soal1_cron](/images/soal1_cron.png)
+      ![soal1_cron](/images/soal1_cron.png)
 
 Menggunakan base64 dan hexdump (xxd). Variabel i adalah nama file. Untuk tiap file di folder /home/sea/Documents/Sisop/Modul_1/nature*.jpg akan dilakukan dicode dengan base64, lalu dikembalikan lagi agar bisa dibuka lagi dengan menggunakan hexdump (xxd). 
    * base64 -d : decode
