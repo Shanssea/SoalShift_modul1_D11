@@ -37,7 +37,7 @@ poin b.
 
       Source code lengkap a,b,c :
       
-      [souce code] 
+      [souce code](soal2.sh)
       
       Output dari ketiga poin :
    
