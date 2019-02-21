@@ -28,22 +28,17 @@ terbanyak pada soal poin a.
    * Tentukan tiga product yang memberikan penjualan(quantity)
 terbanyak berdasarkan tiga product line yang didapatkan pada soal
 poin b.
-
-      ![soal2_1](/images/soal2_1.png)
    
       * Untuk poin a, dengan menggunakan awk -F untuk menggunakan , sebagai separator. Lalu memfilter data pada tahun 2012 dengan membandingkan kolom ke 7 ($7) dengan 2012. Untuk tiap negara di kolom pertama ($1) Quantity di kolom ke sepuluh ($10) dijumlahkan. Lalu print jumlah (i[x]) dengan state (x). Lalu hasil diletakkan di variabel result.
 
-
-      ![soal2_2](/images/soal2_2.png)
-
       * Untuk poin b, filter tahun sama dengan poin a, hanya ditambahkan filter state ($1) sesuai dengan hasil dari poin a. Untuk setiap Products Line ($4) dijumlahkan Quantitynya. Print jumlah (i[x]) dan product linenya. Hasil disimpan di array dibantu dengan IFS agar bisa disimpan per baris. Print array ke 0,1, dan 2.
-
-
-      ![soal2_3](/images/soal2_3.png)
 
       * Untuk poin c, sama seperti poin a dan b hanya saja ditambahkan filter Products Line ($4) sesuai dengan tiap array di poin b. Lalu di sort dan diambil 3 teratas.
 
-
+      Source code lengkap a,b,c :
+      
+      [souce code] 
+      
       Output dari ketiga poin :
    
       ![soal2_4](/images/soal2_4.png)
