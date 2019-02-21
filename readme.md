@@ -4,7 +4,17 @@
 1. Anda diminta tolong oleh teman anda untuk mengembalikan filenya yang telah dienkripsi oleh seseorang menggunakan bash script, file yang dimaksud adalah nature.zip. Karena terlalu mudah kalian memberikan syarat akan membuka seluruh file tersebut jika pukul 14:14 pada tanggal 14 Februari atau hari tersebut adalah hari jumat pada bulan Februari.
 Hint: Base64, Hexdump
 
-      ![soal1_1](/images/soal1_1.png)
+      ```shell
+      #!/bin/bash
+
+      i="1"
+      for var in /home/sea/Documents/Sisop/Modul_1/nature/*.jpg
+      do 
+       base64 -d $var | xxd -r > /home/sea/Documents/Sisop/Modul_1/nature_republic/$i.jpg
+       i=$(($i + 1))
+      done
+
+      ```
 
       cron :
 
@@ -13,7 +23,7 @@ Hint: Base64, Hexdump
       Menggunakan base64 dan hexdump (xxd). Variabel i adalah nama file. Untuk tiap file di folder /home/sea/Documents/Sisop/Modul_1/nature*.jpg akan dilakukan dicode dengan base64, lalu dikembalikan lagi agar bisa dibuka lagi dengan menggunakan hexdump (xxd). 
       * base64 -d : decode
       * xxd -r : revert, mengembalikan agar file bisa terbaca
-
+     
       ![soal1_2](/images/soal1_2.png)
 
       ![soal1_3](/images/soal1_3.png)
@@ -38,10 +48,49 @@ poin b.
       Source code lengkap a,b,c :
       
 <<<<<<< HEAD
+<<<<<<< HEAD
       [Source Code](/soal2.sh) 
 =======
       [Source Code](/soal2.sh)
 >>>>>>> 0f2dccf172c5f9f3449a61be7e2101e05f481e51
+=======
+      ```shell
+      #!/bin/bash
+
+      echo "a"
+      printf "\n"
+      result=`awk -F ',' '{if ($7 == 2012) {i[$1]+=$10;}} END  {for (x in i) print i[x] "," x}' WA_Sales_Products_2012-14.csv | sort -nr | head -1 | awk -F ',' '{print $2}'`
+      echo "$result"
+      printf "\n"
+      #--------------------------------------------
+
+      echo "b"
+      printf "\n"
+      #oldIFS=$IFS
+      IFS=$'\n'
+
+      arr=( $( awk -F ',' '{if ($7 == 2012 && $1 = $result ) {i[$4]+=$10;}} END {for (x in i) print i[x] "," x;}' WA_Sales_Products_2012-14.csv | sort -nr | head -3 | awk -F ',' '{print $2}' ) )
+      #IFS=$oldIFS
+
+      a="${arr[0]}"
+      b="${arr[1]}"
+      c="${arr[2]}"
+
+      echo "$a"
+      echo "$b"
+      echo "$c"
+      printf "\n"
+      #--------------------------------------------
+
+      echo "c"
+      printf "\n"
+      awk -F ',' '{if ($1 == "United States" && $7 == 2012 && ($4 == "Personal Accessories" || $4 == "Camping Equipment" || $4 == "Outdoor Protection" )) {i[$6]+=$10;}} END {for (x in i) print i[x] "," x;}' WA_Sales_Products_2012-14.csv | sort -nr | head -3 | awk -F ',' '{print $2}'
+      printf "\n"
+
+      #----------------------------------
+      
+      ```
+>>>>>>> 2dc79c3e7f4b970998c0dfb5d59fcb0d1c07a200
       
       Output dari ketiga poin :
    
@@ -56,9 +105,23 @@ poin b.
    * Urutan nama file tidak boleh ada yang terlewatkan meski filenya dihapus.
    * Password yang dihasilkan tidak boleh sama.
 
-      ![soal3_1](/images/soal3_1.png)
+      ```shell
+      #!/bin/bash
+
+      count=1
+
+      while test -e "password$count.txt"; 
+      do
+              i=$(( $i + 1 ))
+              count="$( printf -- '%d' "$i" )"
+      done
+
+      cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1 > password$count.txt
+      ```
 
       Jika file password$count.txt tidak ada maka akan melakukan increment i dan i akan di print di count. **cat /dev/urandom** berfungsi untuk melihat char random. **tr -dc 'a-zA-Z0-9'** berfungsi untuk membuat char dari alphabet kecil dan besar serta angka. **Fold -w** untuk membuat width atau lebar dari string. **Head -n** untuk mengambil baris pertama. lalu dimasukkan ke file **password$count.txt**
+      
+      ![soal3_result](/images/soal3_result.png)
 
 ## Soal 4
 
@@ -70,7 +133,9 @@ poin b.
    * Masukkan record tadi ke dalam file logs yang berada pada direktori **/home/[user]/modul1.**
    * Jalankan script tadi setiap 6 menit dari menit ke 2 hingga 30, contoh 13:02, 13:08, 13:14, dst.
    
-       ![soal5_1](/images/soal5_1.png)
+       ```shell
+       awk '/cron/ || /CRON/,!/sudo/' /var/log/syslog | awk 'NF < 13' >> /home/sea/Documents/Sisop/Modul_1/soal5.log
+       ```
 
         cron :
 
