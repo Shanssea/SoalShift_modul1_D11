@@ -147,6 +147,11 @@ poin b.
       
       ![soal4_result2](/images/soal4_result2.png)
       
+      Cron jobs nya adalah sebagai berikut
+      ```
+      0 * * * * /bin/bash /home/sea/Documents/Sisop/Modul_1/soal4.sh
+      ```
+      
 ## Soal 5
 
 5. Buatlah sebuah script bash untuk menyimpan record dalam syslog yang memenuhi kriteria berikut:
