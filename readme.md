@@ -83,7 +83,6 @@ poin b.
       #----------------------------------
       
       ```
->>>>>>> 2dc79c3e7f4b970998c0dfb5d59fcb0d1c07a200
       
       Output dari ketiga poin :
    
