@@ -23,7 +23,7 @@ Hint: Base64, Hexdump
       Menggunakan base64 dan hexdump (xxd). Variabel i adalah nama file. Untuk tiap file di folder /home/sea/Documents/Sisop/Modul_1/nature*.jpg akan dilakukan dicode dengan base64, lalu dikembalikan lagi agar bisa dibuka lagi dengan menggunakan hexdump (xxd). 
       * base64 -d : decode
       * xxd -r : revert, mengembalikan agar file bisa terbaca
-
+     
       ![soal1_2](/images/soal1_2.png)
 
       ![soal1_3](/images/soal1_3.png)
