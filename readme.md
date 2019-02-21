@@ -70,8 +70,8 @@ poin b.
    * Jumlah field (number of field) pada baris tersebut berjumlah kurang dari 13.
    * Masukkan record tadi ke dalam file logs yang berada pada direktori **/home/[user]/modul1.**
    * Jalankan script tadi setiap 6 menit dari menit ke 2 hingga 30, contoh 13:02, 13:08, 13:14, dst.
-
-            ![soal5_1](/images/soal5_1.png)
+    
+         ![soal5_1](/images/soal5_1.png)
 
             cron :
 
