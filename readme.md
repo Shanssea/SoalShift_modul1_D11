@@ -80,6 +80,6 @@ poin b.
         **awk '/cron/ || /CRON/,!/sudo/'** berfungsi untuk menyaring yang hanya memiliki kata cron dan tidak mengandung kata CRON dan sudo dari /var/log/syslog. **awk 'NF < 13'** berfungsi untuk menampilkan kolom kurang dari 13 kolom. lalu disimpan di **/home/sea/modul1/soal5.log**
          Output :
 
-         ![soal5_2](images/soal5_2.png)
+        ![soal5_2](images/soal5_2.png)
 
 
