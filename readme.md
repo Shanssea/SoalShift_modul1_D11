@@ -17,9 +17,10 @@ Hint: Base64, Hexdump
       ```
 
       cron :
-
-      ![soal1_cron](/images/soal1_cron.png)
-
+      ```
+      14 14 14 2 5 /bin/bash /home/sea/Documents/Sisop/Modul_1/soal1.sh      
+      ```
+      
       Menggunakan base64 dan hexdump (xxd). Variabel i adalah nama file. Untuk tiap file di folder /home/sea/Documents/Sisop/Modul_1/nature*.jpg akan dilakukan dicode dengan base64, lalu dikembalikan lagi agar bisa dibuka lagi dengan menggunakan hexdump (xxd). 
       * base64 -d : decode
       * xxd -r : revert, mengembalikan agar file bisa terbaca
@@ -143,9 +144,14 @@ poin b.
       
       **input** membaca syslog yang ada di /var/log/syslog.**alphabet** adalah sumber huruf yang akan menggantikan huruf-huruf yang ada. **trans+=( "${alphabet[@]:(-(26-$jam))}" )** trans mengambil huruf dari alphabet ketika dikurangi dengan $jam. **trans+=( "${alphabet[@]:0:$(( $jam + 1 ))}" )** trans disini mengambil huruf-huruf selanjutnya. **timestamp** adalah timestamp untuk nama filenya sesuai dengan soal. Lalu hasilnya dimasukkan ke /home/sea/Documents/Sisop/Modul_1/Soal4/$timestamp.txt.
       
-      ![soal4_result](/images/soal4_result)
+      ![soal4_result](/images/soal4_result.png)
       
-      ![soal4_result2](/images/soal4_result2)
+      ![soal4_result2](/images/soal4_result2.png)
+      
+      Cron jobs nya adalah sebagai berikut
+      ```
+      0 * * * * /bin/bash /home/sea/Documents/Sisop/Modul_1/soal4.sh
+      ```
       
 ## Soal 5
 
@@ -160,8 +166,9 @@ poin b.
        ```
 
         cron :
-
-        ![soal5_cron](/images/soal5_cron.png)
+        ```
+        2-30/6 * * * * /bin/bash /home/sea/Documents/Sisop/Modul_1/soal5.sh
+        ```
 
         **awk '/cron/ || /CRON/,!/sudo/'** berfungsi untuk menyaring yang hanya memiliki kata cron dan tidak mengandung kata CRON dan sudo dari /var/log/syslog. **awk 'NF < 13'** berfungsi untuk menampilkan kolom kurang dari 13 kolom. lalu disimpan di **/home/sea/modul1/soal5.log**
          Output :
