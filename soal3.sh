@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 count=1
 
 while test -e "password$count.txt"; 

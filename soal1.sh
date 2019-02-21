@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 i="1"
 for var in /home/sea/Documents/Sisop/Modul_1/nature/*.jpg
 do 
