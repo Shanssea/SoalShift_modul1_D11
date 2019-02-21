@@ -47,13 +47,6 @@ poin b.
 
       Source code lengkap a,b,c :
       
-<<<<<<< HEAD
-<<<<<<< HEAD
-      [Source Code](/soal2.sh) 
-=======
-      [Source Code](/soal2.sh)
->>>>>>> 0f2dccf172c5f9f3449a61be7e2101e05f481e51
-=======
       ```shell
       #!/bin/bash
 
