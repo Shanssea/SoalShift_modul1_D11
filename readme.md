@@ -126,23 +126,63 @@ poin b.
       * dan buatkan juga bash script untuk dekripsinya
       
       ```shell
-      !/bin/bash
+      #!/bin/bash
 
       input=$(cat /var/log/syslog)
       alphabet=({a..z})
+      bigalpha=({A..Z})
       trans=()
-      jam=$(date +%H)
+      bigtr=()
+      hour=$(date +%H)
+
+      if [ "$hour" -ge 10 ]
+      then
+      jam=$hour
+      else
+      jam=$((0x$hour))
+      fi
 
       trans+=( "${alphabet[@]:(-(26-$jam))}" )
       trans+=( "${alphabet[@]:0:$(( $jam + 1 ))}" )
-      result=$( echo "$input" | tr "${alphabet[*]}" "${trans[*]}" )
+      bigtr+=( "${bigalpha[@]:(-(26-$jam))}" )
+      bigtr+=( "${bigalpha[@]:0:$(( $jam + 1 ))}" )
+      result=$( echo "$input" | tr "${alphabet[*]}" "${trans[*]}" | tr "${bigalpha[*]}" "${bigtr[*]}")
 
-      timestamp=$(date +%H:%M_%d-%m-%y)
+      timestamp='+%H:%M:%S %Y-%m-%d'
 
-      echo "$result" > /home/sea/Documents/Sisop/Modul_1/Soal4/$timestamp.txt
+      echo "$result" > "/home/sea/Documents/Sisop/Modul_1/Soal4/$(date "$timestamp").txt"
+
       ```
       
-      **input** membaca syslog yang ada di /var/log/syslog.**alphabet** adalah sumber huruf yang akan menggantikan huruf-huruf yang ada. **trans+=( "${alphabet[@]:(-(26-$jam))}" )** trans mengambil huruf dari alphabet ketika dikurangi dengan $jam. **trans+=( "${alphabet[@]:0:$(( $jam + 1 ))}" )** trans disini mengambil huruf-huruf selanjutnya. **timestamp** adalah timestamp untuk nama filenya sesuai dengan soal. Lalu hasilnya dimasukkan ke /home/sea/Documents/Sisop/Modul_1/Soal4/$timestamp.txt.
+      **input** membaca syslog yang ada di /var/log/syslog.**alphabet** dan **big tr** adalah sumber huruf yang akan menggantikan huruf-huruf yang ada. Karena "08" dan "09" dianggap sebagai bilangan oktal oleh shell maka di konversi menjadi decimal ketika jam kurang dari 10. **trans+=( "${alphabet[@]:(-(26-$jam))}" )** trans mengambil huruf dari alphabet ketika dikurangi dengan $jam. **trans+=( "${alphabet[@]:0:$(( $jam + 1 ))}" )** trans disini mengambil huruf-huruf selanjutnya. Begitu pula dengan **bigtr**.**timestamp** adalah timestamp untuk nama filenya sesuai dengan soal. Lalu hasilnya dimasukkan ke /home/sea/Documents/Sisop/Modul_1/Soal4/$(date "$timestamp").txt.
+      
+      ```shell
+      read -r file
+      input=$(cat "/home/sea/Documents/Sisop/Modul_1/Soal4/$file")
+      alphabet=({a..z})
+      bigalpha=({A..Z})
+      trans=()
+      bigtr=()
+      hour=`awk -v var="$file" 'BEGIN {print var}' | awk -F ':' '{print $1}'`
+      hourr=$(( 26 - $hour ))
+
+      if [ "$hourr" -ge "10" ]
+      then
+      jam=$hourr
+      else
+      jam=$((0x$hourr))
+      fi
+
+      trans+=( "${alphabet[@]:(-(26-$jam))}" )
+      trans+=( "${alphabet[@]:0:$(( $jam + 1 ))}" )
+      bigtr+=( "${bigalpha[@]:(-(26-$jam))}" )
+      bigtr+=( "${bigalpha[@]:0:$(( $jam + 1 ))}" )
+      result=$( echo "$input" | tr "${alphabet[*]}" "${trans[*]}" | tr "${bigalpha[*]}" "${bigtr[*]}")
+
+      echo "$result" > "/home/sea/Documents/Sisop/Modul_1/Soal4/dek_$file"
+
+      ```
+      Untuk dekripnya cara kerjanya sama seperti enkrip hanya saja jamnya menjadi 26-jam, untuk bisa kembali ke huruf awal. Jam juga diambil dari kolom 1 dari nama file.
       
       ![soal4_result](/images/soal4_result.png)
       
